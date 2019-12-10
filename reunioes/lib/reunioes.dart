@@ -4,12 +4,7 @@ class Reuniao {
   int _condominio;
   int _tipo;
 
-  Reuniao(
-    this._id,
-    this._descricao,
-    this._condominio,
-    this._tipo
-  );
+  Reuniao(this._id, this._descricao, this._condominio, this._tipo);
 
   int get id => _id;
   set id(int id) => _id = id;
@@ -27,12 +22,17 @@ class Reuniao {
     _tipo = json['tipo'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['descricao'] = this._descricao;
-    data['condominio'] = this._condominio;
-    data['tipo'] = this._tipo;
-    return data;
+  Map<String, dynamic> toJson() => {
+        'id': _id,
+        'descricao': _descricao,
+        'condominio': _condominio,
+        'tipo': _tipo,
+      };
+
+  void listarReunioes() {
+    print('ID: $_id');
+    print('Descricao: $descricao:\n');
+    print('Id Condominio: $condominio\n');
+    print('Id Tipo: $tipo\n');
   }
 }
