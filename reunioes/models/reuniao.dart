@@ -4,35 +4,40 @@ class Reuniao {
   int _condominio;
   int _tipo;
 
-  Reuniao(this._id, this._descricao, this._condominio, this._tipo);
+  Reuniao(
+    this._id, 
+    this._descricao,
+    this._tipo, 
+    this._condominio 
+  );
 
   int get id => _id;
-  set id(int id) => _id = id;
   String get descricao => _descricao;
-  set descricao(String descricao) => _descricao = descricao;
   int get condominio => _condominio;
-  set condominio(int condominio) => _condominio = condominio;
   int get tipo => _tipo;
+  set id(int id) => _id = id;
+  set descricao(String descricao) => _descricao = descricao;
+  set condominio(int condominio) => _condominio = condominio;
   set tipo(int tipo) => _tipo = tipo;
 
   Reuniao.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
     _descricao = json['descricao'];
-    _condominio = json['condominio'];
     _tipo = json['tipo'];
+    _condominio = json['condominio'];
   }
 
   Map<String, dynamic> toJson() => {
         'id': _id,
         'descricao': _descricao,
-        'condominio': _condominio,
         'tipo': _tipo,
+        'condominio': _condominio,
       };
 
   void listarReunioes() {
-    print('ID: $_id');
+    print('\n\nID: $_id\n');
     print('Descricao: $descricao:\n');
-    print('Id Condominio: $condominio\n');
     print('Id Tipo: $tipo\n');
+    print('Id Condominio: $condominio\n');
   }
 }

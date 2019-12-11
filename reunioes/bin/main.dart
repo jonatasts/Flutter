@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:reunioes/reunioes.dart';
+import '../controler/reuniao_controler.dart';
 
 Future<void> main() async {
   int fim = 0;
-  var reuniao = Reuniao(1,'Assembleia Geral Ordinária', 2,2);
+  //var reuniao = Reuniao(1,'Assembleia Geral Ordinária', 2,2);
   
   while(fim != 1){
   menu();
@@ -12,15 +12,15 @@ Future<void> main() async {
 
     switch(opcao) {
       case '1':
-        await ControlerReuniao.listarReunioes();
+        await ReuniaoControler.listarReunioes();
         break;
       
       case '2':
-        await ControlerReuniao.addReuniaoToJson();
+        await ReuniaoControler.addReuniaoToJson();
         break;
       
       case '3':
-        await ControlerReuniao.removerReuniaoFromJson();
+        await ReuniaoControler.removerReuniaoFromJson();
         break;
       
       case '4':
