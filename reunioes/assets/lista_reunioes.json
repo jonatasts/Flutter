@@ -1,6 +1,1 @@
-{
-   "id" : 1,
-   "descricao": "Assembleia Geral Ordinária", 
-   "id_tipo" : 2,
-   "id_condominio" : 2
-}
+[{"id":1,"descricao":"Assembleia Geral Ordinária","tipo":null,"condominio":null},{"id":20,"descricao":"teste","tipo":10,"condominio":20}]
