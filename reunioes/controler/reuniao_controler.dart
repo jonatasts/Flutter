@@ -18,6 +18,20 @@ class ReuniaoControler {
     writeOnJson(lista_reunioes);
   }
 
+  static void editar() async {
+    ListaReunioes lista_reunioes = await getListaReunioes();
+    String descricao_reuniao;
+    print("Reuniões Disponiveis:");
+    for (var i = 0; i < lista_reunioes.reunioes.length; i++) {
+      print(lista_reunioes.reunioes[i].id);
+    }
+
+    print("Escolha a Reunião");
+    descricao_reuniao = stdin.readLineSync();
+
+    
+  }
+
   static void removerReuniaoFromJson() async {
     int id;
     ListaReunioes lista_reunioes = await getListaReunioes();
