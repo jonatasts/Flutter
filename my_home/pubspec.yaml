@@ -75,4 +75,6 @@ flutter:
     - assets/logo.jpg
     - assets/icon_login.png
     - assets/fb-icon.png
+    - assets/user-add-icon.png
+    - assets/user-icon.png
     - assets/reset-password-icon.png
