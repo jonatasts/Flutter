@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
         title: Text(
           "My Home",
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.white, 
           ),
         ),
         centerTitle: true,
@@ -23,7 +23,8 @@ class HomePage extends StatelessWidget {
         child: Text(
           "Bem Vindo !!!",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 40,
+            color: Colors.green,
           ),
         ),
       ),

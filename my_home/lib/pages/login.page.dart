@@ -1,3 +1,4 @@
+import 'package:my_home/pages/api_rest/login.api.dart';
 import 'package:my_home/pages/signup.page.dart';
 import 'package:my_home/pages/home.page.dart';
 import 'package:flutter/material.dart';
@@ -166,16 +167,49 @@ class LoginPage extends StatelessWidget {
       //Botão de Login
       child: SizedBox.expand(
         child: FlatButton(
-          onPressed: () {
+          onPressed: () async {
             if (_formKey.currentState.validate()) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(),
-                ),
-              );
-            } else {
-              return null;
+              String login = _loginController.text;
+              String senha = _senhaController.text;
+
+              var response = await LoginApi.login(login, senha);
+
+              if (response) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              } else {
+                return showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    // retorna um objeto do tipo Dialog
+                    return AlertDialog(
+                      title: new Text("Erro"),
+                      titleTextStyle: TextStyle(
+                        fontSize: 20,
+                        color: Colors.red
+                        ),
+                      content: new Text("Usuário ou senha inválidos !!!"),
+                      contentTextStyle: TextStyle(color: Colors.black),
+                      actions: <Widget>[
+                        // define os botões na base do dialogo
+                        new FlatButton(
+                          child: new Text(
+                            "Fechar",
+                            ),
+                            textColor: Colors.black,
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
             }
           },
           child: Row(
