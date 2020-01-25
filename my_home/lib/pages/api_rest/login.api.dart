@@ -16,11 +16,11 @@ class LoginApi {
     Map mapResponse = json.decode(response.body);
 
       bool auth = mapResponse['auth'];
-      String token = mapResponse['token'];
+      //String token = mapResponse['token'];
       
-      print("Response status: ${response.statusCode}");
+      /*print("Response status: ${response.statusCode}");
       print("Valido: $auth");
-      print("Token: $token");
+      print("Token: $token");*/
 
       return auth;
   }

@@ -118,7 +118,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-//Campo Email
+//Campo Senha
   buildTextFormFieldSenha() {
     return TextFormField(
       keyboardType: TextInputType.text,
@@ -146,6 +146,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
+  //Container do Botão de Login
   buildContainerButton(BuildContext context) {
     return Container(
       height: 60,
@@ -238,4 +239,5 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+
 } //Fim da Classe login.page
