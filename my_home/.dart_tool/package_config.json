@@ -68,6 +68,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "grouped_buttons",
+      "rootUri": "file:///X:/Programas/Development/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/grouped_buttons-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "http",
       "rootUri": "file:///X:/Programas/Development/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.0+4",
       "packageUri": "lib/",
@@ -188,7 +194,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-01-25T14:58:56.721879Z",
+  "generated": "2020-01-25T18:24:43.010499Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }

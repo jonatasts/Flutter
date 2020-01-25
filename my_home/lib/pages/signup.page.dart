@@ -9,6 +9,7 @@ class SignupPage extends StatelessWidget {
   final _senhaController = TextEditingController();
   final _genreController = TextEditingController();
   final _planIdController = TextEditingController();
+  bool _checkBoxGenre = true;
 
   final _formCadKey = GlobalKey<FormState>();
 
@@ -42,8 +43,13 @@ class SignupPage extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              //Campo Sexo
-              buildTextFormFieldGenre(),
+              //Campo Gênero
+              //buildTextFormFieldGenre(),
+              Text(
+                "Gênero",
+                textAlign: TextAlign.left,
+              ),
+              buildCheckBoxGenre(),
               SizedBox(
                 height: 10,
               ),
@@ -188,7 +194,7 @@ class SignupPage extends StatelessWidget {
               String email = _emailController.text;
               String senha = _senhaController.text;
               String nome = _nomeController.text;
-              String genre = _genreController.text; 
+              String genre = _genreController.text;
               int planId = int.parse(_planIdController.text);
 
               var response =
@@ -319,6 +325,18 @@ class SignupPage extends StatelessWidget {
       style: TextStyle(
         fontSize: 20,
       ),
+    );
+  }
+
+  //CheckBox Gênero
+  buildCheckBoxGenre() {
+    return CheckboxListTile(
+      title: Text("M"),
+      onChanged: (bool value) {
+        this._checkBoxGenre = value;
+      },
+      value: this._checkBoxGenre,
+      controlAffinity: ListTileControlAffinity.leading, //  <-- leading Checkbox
     );
   }
 

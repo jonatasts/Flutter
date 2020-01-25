@@ -11,15 +11,26 @@ class RegisterApi {
 
     var _body = json.encode(params);
 
-    var response = await http.post(url, headers: header, body: _body);
+    //var response = await http.post(url, headers: header, body: _body);
 
-    Map mapResponse = json.decode(response.body);
+    //Map mapResponse = json.decode(response.body);
 
-      var ativo = mapResponse['active'];
-      String token = mapResponse['token'];
+    //  var ativo = mapResponse['active'];
+    //  String token = mapResponse['token'];
       
       print("email: $email");
       print("password: $password");
       print("name: $name");
       print("genre: $genre");
-      print("name: $
+      print("planId: $planId");
+      print("\n\n");
+
+      /*
+      print("Response status: ${response.statusCode}");
+      print("Ativo: $ativo");
+      print("Token: $token");
+
+      return ativo;
+      */
+  }
+}
