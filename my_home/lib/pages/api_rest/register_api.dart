@@ -17,7 +17,6 @@ class RegisterApi {
 
       var ativo = mapResponse['active'];
       
-      /*
       print("email: $email");
       print("password: $password");
       print("name: $name");
@@ -27,7 +26,7 @@ class RegisterApi {
       
       print("Response status: ${response.statusCode}");
       print("Ativo: $ativo");
-      */
+      
 
       return ativo;
   }

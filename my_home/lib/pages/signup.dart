@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:grouped_buttons/grouped_buttons.dart';
+
 import 'api_rest/register_api.dart';
 import 'login.dart';
 
@@ -7,6 +9,9 @@ class Signup extends StatelessWidget {
   final _nomeController = TextEditingController();
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
+  String _genre;
+  String _planId;
+
   final _genreController = TextEditingController();
   final _planIdController = TextEditingController();
 
@@ -25,7 +30,7 @@ class Signup extends StatelessWidget {
               //Imagem de fundo do topo da tela
               buildAssetImageFundo(),
               SizedBox(
-                height: 40,
+                height: 30,
               ),
               //Campo nome
               buildTextFormFieldNome(),
@@ -42,13 +47,31 @@ class Signup extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              //Campo Sexo
-              buildTextFormFieldGenre(),
+              //Campo Gênero
+              //buildTextFormFieldGenre(),
+              Text(
+                "Gênero",
+                style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black38),
+              ),
+              //Checkbox Gênero
+              buildCheckboxGroupGenre(),
               SizedBox(
                 height: 10,
               ),
               //Campo Plano
-              buildTextFormFieldPlano(),
+              //buildTextFormFieldPlano(),
+              Text(
+                "Plano",
+                style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black38),
+              ),
+              //Checkbox Plano
+              buildCheckboxGroupPlano(),
               SizedBox(
                 height: 10,
               ),
@@ -69,12 +92,12 @@ class Signup extends StatelessWidget {
   //Imagem de fundo do topo da tela
   buildAssetImageFundo() {
     return Container(
-      width: 200,
-      height: 200,
+      width: 170,
+      height: 170,
       alignment: Alignment(0.0, 1.15),
       decoration: new BoxDecoration(
         image: new DecorationImage(
-          image: AssetImage("assets/user-add-icon.png"),
+          image: AssetImage("assets/user-icon.png"),
           fit: BoxFit.fitHeight,
         ),
       ),
@@ -163,6 +186,84 @@ class Signup extends StatelessWidget {
     );
   }
 
+//Campo Gênero
+  buildTextFormFieldGenre() {
+    return TextFormField(
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        labelText: "Gênero",
+        hintText: "Informe seu Gênero",
+        labelStyle: TextStyle(
+          color: Colors.black38,
+          fontWeight: FontWeight.w400,
+          fontSize: 20,
+        ),
+      ),
+      controller: _genreController,
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Informe seu Gênero";
+        }
+        return null;
+      },
+      //Tamanho da fonte do texto digitado no input
+      style: TextStyle(
+        fontSize: 20,
+      ),
+    );
+  }
+
+//Checkbox Gênero
+  buildCheckboxGroupGenre() {
+    return RadioButtonGroup(
+      labels: <String>[
+        "M",
+        "F",
+      ],
+      disabled: [],
+      onSelected: (String label) => _genre = label,
+    );
+  }
+
+//Checkbox Plano
+  buildCheckboxGroupPlano() {
+    return RadioButtonGroup(
+      labels: <String>[
+        "1",
+        "2",
+      ],
+      disabled: [],
+      onSelected: (String label) => _planId = label,
+    );
+  }
+
+//Campo Plano
+  buildTextFormFieldPlano() {
+    return TextFormField(
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        labelText: "Plano",
+        hintText: "Informe seu Plano",
+        labelStyle: TextStyle(
+          color: Colors.black38,
+          fontWeight: FontWeight.w400,
+          fontSize: 20,
+        ),
+      ),
+      controller: _planIdController,
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Informe seu Plano";
+        }
+        return null;
+      },
+      //Tamanho da fonte do texto digitado no input
+      style: TextStyle(
+        fontSize: 20,
+      ),
+    );
+  }
+
 //Botão Cadastrar
   buildFlatButtonCadastrar(BuildContext context) {
     return Container(
@@ -188,11 +289,10 @@ class Signup extends StatelessWidget {
               String email = _emailController.text;
               String senha = _senhaController.text;
               String nome = _nomeController.text;
-              String genre = _genreController.text; 
-              int planId = int.parse(_planIdController.text);
+              int planId = int.parse(_planId);
 
               var response =
-                  await RegisterApi.register(email, senha, nome, genre, planId);
+                  await RegisterApi.register(email, senha, nome, _genre, planId);
 
               if (response != null) {
                 return showDialog(
@@ -291,60 +391,6 @@ class Signup extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         onPressed: () => Navigator.pop(context, false),
-      ),
-    );
-  }
-
-//Campo Genre
-  buildTextFormFieldGenre() {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        labelText: "Gênero",
-        hintText: "Informe seu Gênero",
-        labelStyle: TextStyle(
-          color: Colors.black38,
-          fontWeight: FontWeight.w400,
-          fontSize: 20,
-        ),
-      ),
-      controller: _genreController,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Informe seu Gênero";
-        }
-        return null;
-      },
-      //Tamanho da fonte do texto digitado no input
-      style: TextStyle(
-        fontSize: 20,
-      ),
-    );
-  }
-
-//Campo Plano
-  buildTextFormFieldPlano() {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        labelText: "Plano",
-        hintText: "Informe seu Plano",
-        labelStyle: TextStyle(
-          color: Colors.black38,
-          fontWeight: FontWeight.w400,
-          fontSize: 20,
-        ),
-      ),
-      controller: _planIdController,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Informe seu Plano";
-        }
-        return null;
-      },
-      //Tamanho da fonte do texto digitado no input
-      style: TextStyle(
-        fontSize: 20,
       ),
     );
   }
