@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'api_rest/editar_perfil.dart';
+import 'editar_perfil.dart';
 import 'login.dart';
 
 class Home extends StatefulWidget {

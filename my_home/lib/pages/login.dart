@@ -41,48 +41,20 @@ class Login extends StatelessWidget {
               ),
               //Campo da Senha
               buildTextFormFieldSenha(),
-
               //Botão Recuperar Senha
-              /*
-              Container(
-                height: 40,
-                alignment: Alignment.centerRight,
-                child: FlatButton(
-                  child: Text(
-                    "Recuperar Senha",
-                    textAlign: TextAlign.right,
-                  ),
-                  onPressed: () {},
-                ),
-              ),*/
+              //buildContainerButtonRecuperarSenha(context),
               //Espaçamento
               SizedBox(
                 height: 40,
               ),
               //Container do Botão de Login
-              buildContainerButton(context),
+              buildContainerButtonLogin(context),
               //Espaçamento
               SizedBox(
                 height: 10,
               ),
               //Container no botão cadastre-se
-              Container(
-                height: 40,
-                child: FlatButton(
-                  child: Text(
-                    "Cadastre-se",
-                    textAlign: TextAlign.center,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Signup(),
-                      ),
-                    );
-                  },
-                ),
-              ),
+              buildContainerButtonCadastreSe(context),
             ],
           ),
         ),
@@ -147,7 +119,7 @@ class Login extends StatelessWidget {
   }
 
   //Container do Botão de Login
-  buildContainerButton(BuildContext context) {
+  buildContainerButtonLogin(BuildContext context) {
     return Container(
       height: 60,
       alignment: Alignment.centerLeft,
@@ -190,10 +162,8 @@ class Login extends StatelessWidget {
                     // retorna um objeto do tipo Dialog
                     return AlertDialog(
                       title: new Text("Erro"),
-                      titleTextStyle: TextStyle(
-                        fontSize: 20,
-                        color: Colors.red
-                        ),
+                      titleTextStyle:
+                          TextStyle(fontSize: 20, color: Colors.red),
                       content: new Text("Usuário ou senha inválidos !!!"),
                       contentTextStyle: TextStyle(color: Colors.black),
                       actions: <Widget>[
@@ -201,8 +171,8 @@ class Login extends StatelessWidget {
                         new FlatButton(
                           child: new Text(
                             "Fechar",
-                            ),
-                            textColor: Colors.black,
+                          ),
+                          textColor: Colors.black,
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -241,4 +211,40 @@ class Login extends StatelessWidget {
     );
   }
 
+  //Container no botão cadastre-se
+  buildContainerButtonCadastreSe(BuildContext context) {
+    return Container(
+      height: 40,
+      child: FlatButton(
+        child: Text(
+          "Cadastre-se",
+          textAlign: TextAlign.center,
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Signup(),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  //Botão Recuperar Senha
+  buildContainerButtonRecuperarSenha(BuildContext context) {
+    /*
+    Container(
+      height: 40,
+      alignment: Alignment.centerRight,
+      child: FlatButton(
+        child: Text(
+          "Recuperar Senha",
+          textAlign: TextAlign.right,
+        ),
+        onPressed: () {},
+      ),
+    );*/
+  }
 } //Fim da Classe login.page
