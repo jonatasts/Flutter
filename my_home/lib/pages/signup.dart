@@ -12,8 +12,6 @@ class Signup extends StatelessWidget {
   String _genre;
   String _planId;
 
-  final _genreController = TextEditingController();
-  final _planIdController = TextEditingController();
 
   final _formCadKey = GlobalKey<FormState>();
 
@@ -47,8 +45,6 @@ class Signup extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              //Campo Gênero
-              //buildTextFormFieldGenre(),
               Text(
                 "Gênero",
                 style: TextStyle(
@@ -61,8 +57,6 @@ class Signup extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              //Campo Plano
-              //buildTextFormFieldPlano(),
               Text(
                 "Plano",
                 style: TextStyle(
@@ -186,33 +180,6 @@ class Signup extends StatelessWidget {
     );
   }
 
-//Campo Gênero
-  buildTextFormFieldGenre() {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        labelText: "Gênero",
-        hintText: "Informe seu Gênero",
-        labelStyle: TextStyle(
-          color: Colors.black38,
-          fontWeight: FontWeight.w400,
-          fontSize: 20,
-        ),
-      ),
-      controller: _genreController,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Informe seu Gênero";
-        }
-        return null;
-      },
-      //Tamanho da fonte do texto digitado no input
-      style: TextStyle(
-        fontSize: 20,
-      ),
-    );
-  }
-
 //Checkbox Gênero
   buildCheckboxGroupGenre() {
     return RadioButtonGroup(
@@ -234,33 +201,6 @@ class Signup extends StatelessWidget {
       ],
       disabled: [],
       onSelected: (String label) => _planId = label,
-    );
-  }
-
-//Campo Plano
-  buildTextFormFieldPlano() {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        labelText: "Plano",
-        hintText: "Informe seu Plano",
-        labelStyle: TextStyle(
-          color: Colors.black38,
-          fontWeight: FontWeight.w400,
-          fontSize: 20,
-        ),
-      ),
-      controller: _planIdController,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Informe seu Plano";
-        }
-        return null;
-      },
-      //Tamanho da fonte do texto digitado no input
-      style: TextStyle(
-        fontSize: 20,
-      ),
     );
   }
 
