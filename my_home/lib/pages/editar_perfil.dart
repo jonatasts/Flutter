@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'api_rest/usuarios_api.dart';
-
 class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,14 +18,8 @@ class EditProfile extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
         child: Icon(Icons.edit),
-        onPressed: () {
-          showUsers();
-        },
+        onPressed: () {},
       ),
     );
-  }
-
-  showUsers() {
-    UsuariosAPI.getUsuarios();
   }
 }

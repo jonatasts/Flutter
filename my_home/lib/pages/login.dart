@@ -146,9 +146,7 @@ class Login extends StatelessWidget {
               String senha = _senhaController.text;
 
               var usuario = await LoginApi.login(login, senha);
-
               if (usuario != null) {
-                print("==> $usuario");
                 Navigator.push(
                   context,
                   MaterialPageRoute(

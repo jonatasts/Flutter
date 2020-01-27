@@ -234,7 +234,7 @@ class Signup extends StatelessWidget {
               var response =
                   await RegisterApi.register(email, senha, nome, _genre, planId);
 
-              if (response != null) {
+              if (response) {
                 return showDialog(
                   context: context,
                   builder: (BuildContext context) {
