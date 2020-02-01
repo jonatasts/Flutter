@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Jan 25 23:30:05 BRST 2020
+#Sat Feb 01 14:51:03 BRST 2020
 17.baseType=DIRECTORY
 4.path=flutter_assets/assets/icon_login.png
 8.set=ASSET
@@ -8,7 +8,7 @@
 4.baseType=DIRECTORY
 14.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 16.set=ASSET
-count=18
+count=19
 6.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 13.path=flutter_assets/AssetManifest.json
 6.baseType=DIRECTORY
@@ -39,26 +39,30 @@ count=18
 16.baseType=DIRECTORY
 14.set=ASSET
 2.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
+18.baseType=DIRECTORY
 1.path=flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 0.set=ASSET
 1.baseType=DIRECTORY
 3.baseType=DIRECTORY
 5.set=ASSET
 9.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
-16.path=flutter_assets/isolate_snapshot_data
+16.path=flutter_assets/assets/bg_home.jpg
+18.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 5.baseType=DIRECTORY
 11.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 8.path=flutter_assets/assets/reset-password-icon.png
-17.path=flutter_assets/assets/logo.jpg
+17.path=flutter_assets/isolate_snapshot_data
 7.baseType=DIRECTORY
 3.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 10.path=flutter_assets/fonts/MaterialIcons-Regular.ttf
 13.set=ASSET
 2.path=lib/x86_64/libflutter.so
 9.baseType=DIRECTORY
+18.set=ASSET
 12.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 4.set=ASSET
 9.path=lib/x86/libflutter.so
+18.path=flutter_assets/assets/logo.jpg
 4.base=C\:\\Users\\Jhon\\Desktop\\GitHub\\Flutter\\my_home\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 11.path=lib/armeabi-v7a/libflutter.so
 9.set=NATIVE_RESOURCE

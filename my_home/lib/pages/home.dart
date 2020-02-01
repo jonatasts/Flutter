@@ -9,16 +9,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _selectDrawerItem = 1;
+  int _selectDrawerItem = 0;
 
   _getPageDrawerItem(int pos) {
     switch (pos) {
       case 0:
-        return EditProfile();
-        break;
+      return _buildBackgroundImage();
+      break;
+
       case 1:
-        return _sobre();
-        break;
+      return EditProfile();
+      break;
+
+      case 2:
+      return _sobre();
+      break;
     }
   }
 
@@ -27,21 +32,6 @@ class _HomeState extends State<Home> {
     setState(() {
       _selectDrawerItem = pos;
     });
-  }
-
-  _sobre() {
-    return Center(
-      child: Container(
-        child: Text(
-          "Bem Vindo ao\n My Home ! \n\n O app que gerencia seu condiminio !!!",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 40,
-            color: Colors.green,
-          ),
-        ),
-      ),
-    );
   }
 
   @override
@@ -76,19 +66,27 @@ class _HomeState extends State<Home> {
               ),
             ),
             ListTile(
-              title: Text("Perfil"),
-              leading: Icon(Icons.account_circle),
+              title: Text("Home"),
+              leading: Icon(Icons.home),
               selected: (0 == _selectDrawerItem),
               onTap: () {
                 _onSelectedItem(0);
               },
             ),
             ListTile(
-              title: Text("Sobre"),
-              leading: Icon(Icons.info),
+              title: Text("Perfil"),
+              leading: Icon(Icons.account_circle),
               selected: (1 == _selectDrawerItem),
               onTap: () {
                 _onSelectedItem(1);
+              },
+            ),
+            ListTile(
+              title: Text("Sobre"),
+              leading: Icon(Icons.info),
+              selected: (2 == _selectDrawerItem),
+              onTap: () {
+                _onSelectedItem(2);
               },
             ),
             Divider(),
@@ -96,18 +94,68 @@ class _HomeState extends State<Home> {
               title: Text("Sair"),
               leading: Icon(Icons.exit_to_app),
               onTap: () {
-                Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Login(),
-                      ),
-                    );
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Login(),
+                  ),
+                );
               },
             ),
           ],
         ),
       ),
-      body: _getPageDrawerItem(_selectDrawerItem),
+      body:
+      _getPageDrawerItem(_selectDrawerItem),
     );
   }
+
+  _buildBackgroundImage() {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/bg_home.jpg'),
+        ),
+      ),
+    );
+  }
+
+  _sobre() {
+    return Center(
+      child: ListView(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(top:40, left:15, right: 15),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                "What is My Home?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black45,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top:40, left:15, right: 15),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black45,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 }

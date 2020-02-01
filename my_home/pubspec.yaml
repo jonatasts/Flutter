@@ -29,6 +29,7 @@ dev_dependencies:
     sdk: flutter
   http: ^0.12.0+4
   grouped_buttons: ^1.0.4
+  toast: ^0.1.5
 
 
 
@@ -81,3 +82,4 @@ flutter:
     - assets/user-add-icon.png
     - assets/user-icon.png
     - assets/reset-password-icon.png
+    - assets/bg_home.jpg

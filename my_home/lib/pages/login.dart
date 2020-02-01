@@ -2,6 +2,7 @@ import 'package:my_home/pages/api_rest/login_api.dart';
 import 'package:my_home/pages/signup.dart';
 import 'package:my_home/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 
 class Login extends StatelessWidget {
   final _loginController = TextEditingController();
@@ -147,13 +148,14 @@ class Login extends StatelessWidget {
 
               var usuario = await LoginApi.login(login, senha);
               if (usuario != null) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Home(),
+                Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => Home(),
                   ),
                 );
               } else {
+                Toast.show("Usuário ou senha inválidos !!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                /*
                 return showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -178,7 +180,8 @@ class Login extends StatelessWidget {
                       ],
                     );
                   },
-                );
+                );*/
+
               }
             }
           },
