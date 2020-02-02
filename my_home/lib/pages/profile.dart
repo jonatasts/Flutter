@@ -56,48 +56,51 @@ class Profile extends StatelessWidget {
   iconUser() {
     return
     Container(
-      height: 100,
+      width: 200,
+      height: 200,
+      alignment: Alignment(0.0, 0.13),
       decoration: BoxDecoration(
         image: new DecorationImage(
-          image: AssetImage("assets/bg_profile.png"),
-          fit: BoxFit.fitHeight,
+          image: AssetImage("assets/bg_profile.jpg"),
+          fit: BoxFit.cover,
         ),
       ),
       child : CircleAvatar(
         radius: 40,
-        backgroundColor:  Color(0xffA9A9B4),
+        backgroundColor:  Color(0xffffffff),
         child: Text(_usuario.name[0],
           style: TextStyle(
             fontSize: 40,
             fontWeight: FontWeight.bold,
-            color: Colors.white
+            color: Colors.black,
           ),
         )
-      ),);
-    }
-
-    _listTile(String titulo, String text){
-      return  ListTile(
-        title: Text(
-          titulo,
-          style:_style(),
-        ),
-        subtitle: Text(
-          text == null ? 'Não informado' : text,
-          style:TextStyle(
-            fontSize: 18,
-            color: Colors.black54
-          ),
-        ),
-      );
-    }
-
-    TextStyle _style(){
-      return TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-        fontSize: 20,
-      );
-    }
-
+      ),
+    );
   }
+
+  _listTile(String titulo, String text){
+    return  ListTile(
+      title: Text(
+        titulo,
+        style:_style(),
+      ),
+      subtitle: Text(
+        text == null ? 'Não informado' : text,
+        style:TextStyle(
+          fontSize: 18,
+          color: Colors.black54
+        ),
+      ),
+    );
+  }
+
+  TextStyle _style(){
+    return TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      fontSize: 20,
+    );
+  }
+
+}
