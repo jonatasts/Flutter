@@ -186,11 +186,16 @@ class Signup extends StatelessWidget {
       buildCheckboxGroupGenre() {
         return RadioButtonGroup(
           labels: <String>[
-            "M",
-            "F",
+            "Masculino",
+            "Feminino",
           ],
           disabled: [],
-          onSelected: (String label) => _genre = label,
+          onSelected: (String label) {
+            if(label == "Masculino")
+            _genre = "M";
+            else
+            _genre= "F";
+          },
         );
       }
 
@@ -238,7 +243,8 @@ class Signup extends StatelessWidget {
 
                   if (response) {
                     Toast.show("Usuário cadastrado com sucesso !!!", context, duration: Toast.LENGTH_SHORT, gravity: Toast.CENTER);
-                    await new Future.delayed(const Duration(seconds : 2));
+                    await new Future.delayed(const Duration(seconds : 1));
+
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (BuildContext context) => Login(),
@@ -279,7 +285,7 @@ class Signup extends StatelessWidget {
       }
 
       //FlatButton add(+) sobreposto - fica embaixo do BoxDecoration da imagem de fundo do topo da tela
-      buildFlatButtonCancelarAddImageFundo() {
+      buildFlatButtonAddImageFundo() {
         /*
         child: Container(
         height: 56,

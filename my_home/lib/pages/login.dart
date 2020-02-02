@@ -154,34 +154,7 @@ class Login extends StatelessWidget {
                   ),
                 );
               } else {
-                Toast.show("Usuário ou senha inválidos !!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                /*
-                return showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    // retorna um objeto do tipo Dialog
-                    return AlertDialog(
-                      title: new Text("Erro"),
-                      titleTextStyle:
-                          TextStyle(fontSize: 20, color: Colors.red),
-                      content: new Text("Usuário ou senha inválidos !!!"),
-                      contentTextStyle: TextStyle(color: Colors.black),
-                      actions: <Widget>[
-                        // define os botões na base do dialogo
-                        new FlatButton(
-                          child: new Text(
-                            "Fechar",
-                          ),
-                          textColor: Colors.black,
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );*/
-
+                Toast.show("Usuário ou senha inválidos !", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
               }
             }
           },

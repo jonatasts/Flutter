@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'editar_perfil.dart';
+import 'models/usuario.dart';
+import 'profile.dart';
 import 'login.dart';
 
 class Home extends StatefulWidget {
@@ -9,6 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Usuario _usuario = Usuario.getInstance();
   int _selectDrawerItem = 0;
 
   _getPageDrawerItem(int pos) {
@@ -18,7 +20,7 @@ class _HomeState extends State<Home> {
       break;
 
       case 1:
-      return EditProfile();
+      return Profile();
       break;
 
       case 2:
@@ -53,12 +55,12 @@ class _HomeState extends State<Home> {
               decoration: BoxDecoration(
                 color: Colors.grey,
               ),
-              accountName: Text("Usuario"),
-              accountEmail: Text("novo.usuario@gmail.com"),
+              accountName: Text(_usuario.name),
+              accountEmail: Text(_usuario.email),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white70,
                 child: Text(
-                  "N",
+                  _usuario.name[0],
                   style: TextStyle(
                     fontSize: 40,
                   ),

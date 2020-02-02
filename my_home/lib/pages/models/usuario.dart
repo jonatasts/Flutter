@@ -2,7 +2,7 @@ class Usuario {
   String _email;
   String _token;
   String _name;
-  Null _birthday;
+  String _birthday;
   String _genre;
   static Usuario _usuario = null;
 
@@ -11,7 +11,7 @@ class Usuario {
   static Usuario getInstance() {
     if(_usuario == null)
       _usuario = new Usuario._();
-    
+
     return _usuario;
   }
 
@@ -21,8 +21,8 @@ class Usuario {
   set token(String token) => _token = token;
   String get name => _name;
   set name(String name) => _name = name;
-  Null get birthday => _birthday;
-  set birthday(Null birthday) => _birthday = birthday;
+  String get birthday => _birthday;
+  set birthday(String birthday) => _birthday = birthday;
   String get genre => _genre;
   set genre(String genre) => _genre = genre;
 
@@ -44,4 +44,3 @@ class Usuario {
     return data;
   }
 }
-

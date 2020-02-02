@@ -1,4 +1,5 @@
 import 'dart:convert';
+import "dart:async";
 
 import 'package:http/http.dart' as http;
 import 'package:my_home/pages/models/usuario.dart';
@@ -27,6 +28,9 @@ class LoginApi {
       _usuario = null;
     }
 
+    await new Future.delayed(const Duration(seconds : 2));
+
     return _usuario;
+
   }
 }
