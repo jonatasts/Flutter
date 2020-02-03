@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:my_home/pages/models/usuario.dart';
@@ -16,9 +17,15 @@ class EditProfileAPI {
 
     var _body = json.encode(params);
 
-    var response = await http.put(url, headers: header, body: _body);
+    var response = await http.put(url,
+        headers: {
+          HttpHeaders.contentTypeHeader:'application/json',
+          'x-access-token': token,
+        },
+        body:_body
+     );
 
-    if (response.statusCode == 200)
+    if (response.statusCode == 201)
       return true;
 
     return false;
@@ -27,32 +34,21 @@ class EditProfileAPI {
   static Future<bool> editPerson(atributo, keyUser, personId, token) async {
     var url = "https://api.myhome.well.eti.br/persons/$personId";
 
-    var header = {
-      "Content-Type": "application/json",
-      "x-access-token": token
-    };
-
     Map params = {
-      "$keyUser": atributo
+      keyUser : atributo
     };
 
     var _body = json.encode(params);
 
-    var response = await http.put(url, headers: header, body: _body);
+    var response = await http.put(url,
+        headers: {
+          HttpHeaders.contentTypeHeader:'application/json',
+          'x-access-token': token,
+        },
+        body:_body
+     );
 
-    print("");
-    print("");
-    print("******************************************************");
-    print("******************************************************");
-    print("Responde: $response");
-    print("");
-    print("");
-    print("******************************************************");
-    print("******************************************************");
-    print("");
-
-
-    if (response.statusCode == 200)
+    if (response.statusCode == 201)
       return true;
 
     return false;

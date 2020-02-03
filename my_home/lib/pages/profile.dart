@@ -13,6 +13,7 @@ class _ProfileState extends State<Profile> {
   TextEditingController emailController = TextEditingController();
   TextEditingController birthdayController = TextEditingController();
   TextEditingController genreController = TextEditingController();
+  GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   var letraUser;
 
   @override
@@ -24,24 +25,29 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
+      body:
+      RefreshIndicator(
+        key: _refreshIndicatorKey,
+        onRefresh: _dataUser,
+        child: ListView(
+          children: <Widget>[
 
-          iconUser(),
-          SizedBox(
-            height: 30,
-          ),
-          ListTileWidget(title: "Nome", subTitle:nameController.text, controller: nameController, keyUser: "name"),
+            iconUser(),
+            SizedBox(
+              height: 30,
+            ),
+            ListTileWidget(title: "Nome", subTitle:nameController.text,refreshIndicatorKey: _refreshIndicatorKey ,controller: nameController, keyUser: "name"),
 
-          Divider(),
-          ListTileWidget(title: "E-mail", subTitle:emailController.text, controller: emailController, keyUser: "email"),
+            Divider(),
+            ListTileWidget(title: "E-mail", subTitle:emailController.text, controller: emailController, keyUser: "email"),
 
-          Divider(),
-          ListTileWidget(title: "Data de Aniversário", subTitle:birthdayController.text, controller: birthdayController, keyUser: "birthday"),
+            Divider(),
+            ListTileWidget(title: "Data de Aniversário", subTitle:birthdayController.text, controller: birthdayController, keyUser: "birthday"),
 
-          Divider(),
-          ListTileWidget(title: "Sexo", subTitle:genreController.text, controller: genreController, keyUser: "genre"),
-        ],
+            Divider(),
+            ListTileWidget(title: "Sexo", subTitle:genreController.text, controller: genreController, keyUser: "genre"),
+          ],
+        ),
       ),
     );
   }
@@ -99,7 +105,7 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  void _dataUser() {
+  Future<void> _dataUser() async{
     Usuario _usuario = Usuario.getInstance();
     nameController.text = _usuario.name;
     emailController.text = _usuario.email;

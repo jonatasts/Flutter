@@ -13,12 +13,13 @@ class ListTileWidget extends StatelessWidget{
   final String subTitle;
   final String keyUser;
   final TextEditingController controller;
+  final GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   String genre;
 
   DateTime _dateTime;
   DateTimePickerLocale _locale = DateTimePickerLocale.pt_br;
 
-  ListTileWidget({@required this.title, @required this.subTitle, @required this.controller, @required this.keyUser});
+  ListTileWidget({@required this.title, @required this.subTitle, @required this.refreshIndicatorKey, @required this.controller, @required this.keyUser});
 
   TextStyle _style(){
     return TextStyle(
@@ -127,44 +128,50 @@ class ListTileWidget extends StatelessWidget{
       Usuario _usuario = Usuario.getInstance();
       var valido;
 
-      if(keyUser == 'email')
-      EditProfileAPI.editUser(controller.text, _usuario.idUser, _usuario.token);
+      if(keyUser == 'email'){
+        valido = EditProfileAPI.editUser(controller.text, _usuario.idUser, _usuario.token);
+        _usuario.email = controller.text;
+      }
       else {
         switch(keyUser){
           case 'name':{
-            _usuario.email = controller.text;
             valido = EditProfileAPI.editPerson(controller.text, keyUser, _usuario.personId, _usuario.token);
+            _usuario.name = controller.text;
           }
           break;
 
           case 'birthday': {
-            _usuario.birthday = controller.text;
             valido = EditProfileAPI.editPerson(controller.text, keyUser, _usuario.personId, _usuario.token);
+            _usuario.birthday = controller.text;
           }
           break;
 
           case 'genre': {
             controller.text = genre;
-            _usuario.genre = controller.text;
             valido = EditProfileAPI.editPerson(controller.text, keyUser, _usuario.personId, _usuario.token);
+            _usuario.genre = controller.text;
           }
           break;
         }
       }
 
       valido.then((onValue){
-        if(onValue == true){
-          if(keyUser == 'birthday')
-          Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-          else
-          Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+        if(onValue){
+          if(keyUser == 'birthday'){
+            Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+            refreshIndicatorKey.currentState.show();
+          }
+          else {
+            Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+            refreshIndicatorKey.currentState.show();
+          }
 
           /*Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => Profile())
-          );*/
-        }
-        else
-        Toast.show("Erro ao atualizar os dados!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-      });
-    }
+          MaterialPageRoute(builder: (BuildContext context) => Profile())
+        );*/
+      }
+      else
+      Toast.show("Erro ao atualizar os dados!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+    });
   }
+}
