@@ -5,7 +5,6 @@ import 'package:my_home/pages/models/usuario.dart';
 
 class UsuarioAPI {
   static save(Usuario usuario) async {
-    int idUsuario;
     var url = "https://api.myhome.well.eti.br/users";
 
     var header = {
@@ -19,16 +18,19 @@ class UsuarioAPI {
     if (response.statusCode == 200) {
       for (var user in mapResponse['rows']) {
         if (user['email'] == usuario.email) {
-          idUsuario = user['personId'];
+          usuario.idUser = user['id'];
+          usuario.personId = user['personId'];
         }
       }
     }
 
-    _updateDataUser(idUsuario, usuario);
+    _updateDataUser(usuario);
   }
 
-  static _updateDataUser(int idUsuario, Usuario usuario) async {
-    var url = "https://api.myhome.well.eti.br/persons/$idUsuario";
+  static _updateDataUser(Usuario usuario) async {
+
+
+    var url = "https://api.myhome.well.eti.br/persons/${usuario.personId}";
 
     var header = {
       "Content-Type": "application/json",
@@ -40,17 +42,13 @@ class UsuarioAPI {
 
     if (response.statusCode == 200) {
       usuario.name = mapResponse['name'];
-      usuario.birthday = mapResponse['birthday'];
       usuario.genre = mapResponse['genre'];
 
-      /*
-      print("${usuario.email}");
-      print("${usuario.name}");
-      print("${usuario.token}");
-      print("${usuario.birthday}");
-      print("${usuario.genre}");
+      if(mapResponse['birthday'] == null)
+      usuario.birthday = "";
+      else
+      usuario.birthday = mapResponse['birthday'];
 
-      */
     }
   }
 }

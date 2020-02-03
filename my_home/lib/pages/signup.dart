@@ -48,7 +48,7 @@ class Signup extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                "Gênero",
+                "Sexo",
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,

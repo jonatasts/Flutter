@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Feb 01 23:05:13 BRST 2020
+#Sun Feb 02 00:49:44 BRST 2020
 17.baseType=DIRECTORY
 4.path=flutter_assets/assets/icon_login.png
 8.set=ASSET

@@ -7,12 +7,19 @@ import 'package:grouped_buttons/grouped_buttons.dart';
 import 'api_rest/edit_profile_api.dart';
 import 'profile.dart';
 
-class EditProfile extends StatelessWidget {
-  final _nomeController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _senhaController = TextEditingController();
+
+class EditProfile extends StatefulWidget {
+  @override
+  _EditProfileState createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  TextEditingController _nomeController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController  _birthdayController = TextEditingController();
   String _genre;
-  String _planId;
+
+
 
 
   final _formCadKey = GlobalKey<FormState>();
@@ -43,7 +50,7 @@ class EditProfile extends StatelessWidget {
                 height: 10,
               ),
               //Campo Senha
-              buildTextFormFieldSenha(),
+              buildTextFormFieldBirthday(),
               SizedBox(
                 height: 10,
               ),
@@ -60,7 +67,7 @@ class EditProfile extends StatelessWidget {
                   height: 10,
                 ),
                 //Botão Cadastrar
-                buildFlatButtonCadastrar(context),
+                buildFlatButtonAlterar(context),
                 SizedBox(
                   height: 10,
                 ),
@@ -143,23 +150,23 @@ class EditProfile extends StatelessWidget {
     }
 
     //Campo Senha
-    buildTextFormFieldSenha() {
+    buildTextFormFieldBirthday() {
       return TextFormField(
         keyboardType: TextInputType.text,
-        obscureText: true,
         decoration: InputDecoration(
-          labelText: "Senha",
-          hintText: "Informe sua senha",
+          labelText: "Data de aniversário",
+          hintText: "Informe seu aniversário",
           labelStyle: TextStyle(
             color: Colors.black38,
             fontWeight: FontWeight.w400,
             fontSize: 20,
           ),
         ),
-        controller: _senhaController,
+        controller: _birthdayController,
+        //_birthdayController.text = "",
         validator: (value) {
           if (value.isEmpty) {
-            return "Informe sua Senha";
+            return "Informe seu aniversário";
           }
           return null;
         },
@@ -188,7 +195,7 @@ class EditProfile extends StatelessWidget {
     }
 
     //Botão Cadastrar
-    buildFlatButtonCadastrar(BuildContext context) {
+    buildFlatButtonAlterar(BuildContext context) {
       return Container(
         height: 60,
         alignment: Alignment.centerLeft,
@@ -207,31 +214,9 @@ class EditProfile extends StatelessWidget {
         child: SizedBox.expand(
           child: FlatButton(
             //Ação ao clicar no botão cadastrar
-            onPressed: () async {
-              if (_formCadKey.currentState.validate()) {
-                String email = _emailController.text;
-                String senha = _senhaController.text;
-                String nome = _nomeController.text;
-                int planId = int.parse(_planId);
-
-                var response =
-                await EditProfileAPI.editProfile(email, "name", "genre", "birthday");
-
-                if (response) {
-                  Toast.show("Usuário cadastrado com sucesso !!!", context, duration: Toast.LENGTH_SHORT, gravity: Toast.CENTER);
-                  await new Future.delayed(const Duration(seconds : 2));
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => Profile(),
-                    ),
-                  );
-                } else {
-                  Toast.show("Erro ao cadastrar usuário !!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                }
-              }
-            },
+            onPressed: () async {},
             child: Text(
-              "Cadastrar",
+              "Alterar",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,

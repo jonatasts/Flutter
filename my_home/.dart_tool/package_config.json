@@ -62,6 +62,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_cupertino_date_picker",
+      "rootUri": "file:///X:/Programas/Development/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_cupertino_date_picker-1.0.12",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///X:/Programas/Development/flutter/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -200,7 +206,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-02-02T00:59:58.585629Z",
+  "generated": "2020-02-02T02:45:05.821570Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }

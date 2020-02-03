@@ -1,4 +1,6 @@
 class Usuario {
+  int _idUser;
+  int _personId;
   String _email;
   String _token;
   String _name;
@@ -15,6 +17,11 @@ class Usuario {
     return _usuario;
   }
 
+  int get personId => _personId;
+  set personId(int personId) => _personId = personId;
+  int get idUser => _idUser;
+  set idUser(int idUser) => _idUser = idUser;
+
   String get email => _email;
   set email(String email) => _email = email;
   String get token => _token;
@@ -27,6 +34,8 @@ class Usuario {
   set genre(String genre) => _genre = genre;
 
   Usuario.fromJson(Map<String, dynamic> json) {
+    _personId = json['personId'];
+    _idUser = json['idUser'];
     _email = json['email'];
     _token = json['token'];
     _name = json['name'];
@@ -36,6 +45,8 @@ class Usuario {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['personId'] = this._personId;
+    data['idUser'] = this._idUser;
     data['email'] = this._email;
     data['token'] = this._token;
     data['name'] = this._name;
