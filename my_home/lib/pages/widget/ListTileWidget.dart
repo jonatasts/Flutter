@@ -99,7 +99,8 @@ class ListTileWidget extends StatelessWidget{
     }
 
     dataPicker(BuildContext context){
-      _dateTime= controller.text == "Null"? DateTime.now(): DateTime.parse(controller.text);
+      print("Data: " + controller.text);
+      _dateTime= controller.text == ""? DateTime.now(): DateTime.parse(controller.text);
       DatePicker.showDatePicker(
         context,
         pickerTheme: DateTimePickerTheme(
@@ -109,7 +110,7 @@ class ListTileWidget extends StatelessWidget{
         ),
         minDateTime: DateTime.parse("1950-01-01"),
         maxDateTime: DateTime.now(),
-        initialDateTime: controller.text == "Null"? DateTime.now(): DateTime.parse(controller.text),
+        initialDateTime: controller.text == ""? DateTime.now(): DateTime.parse(controller.text),
         dateFormat: 'yyyy-MMMM-dd',
         locale: _locale,
         onChange: (dateTime, selectedIndex){
@@ -120,7 +121,9 @@ class ListTileWidget extends StatelessWidget{
           controller.text = _dateTime.toString().split(" ")[0];
           udpateData(context);
         },
-        onCancel: (){}
+        onCancel: (){
+          //Navigator.of(context).pop();
+        }
       );
     }
 
@@ -130,48 +133,88 @@ class ListTileWidget extends StatelessWidget{
 
       if(keyUser == 'email'){
         valido = EditProfileAPI.editUser(controller.text, _usuario.idUser, _usuario.token);
-        _usuario.email = controller.text;
+        valido.then((onValue){
+          if(onValue){
+            _usuario.email = controller.text;
+            Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+            refreshIndicatorKey.currentState.show();
+          }
+          else {
+            controller.text = _usuario.email;
+            Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+          }
+        });
       }
       else {
         switch(keyUser){
           case 'name':{
             valido = EditProfileAPI.editPerson(controller.text, keyUser, _usuario.personId, _usuario.token);
-            _usuario.name = controller.text;
+            valido.then((onValue){
+              if(onValue){
+                _usuario.name = controller.text;
+                Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                refreshIndicatorKey.currentState.show();
+              }
+              else {
+                controller.text = _usuario.name;
+                Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+              }
+            });
+
           }
           break;
 
           case 'birthday': {
             valido = EditProfileAPI.editPerson(controller.text, keyUser, _usuario.personId, _usuario.token);
-            _usuario.birthday = controller.text;
+            valido.then((onValue){
+              if(onValue){
+                _usuario.birthday = controller.text;
+                Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                refreshIndicatorKey.currentState.show();
+              }
+              else {
+                controller.text = _usuario.birthday;
+                Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+              }
+            });
           }
           break;
 
           case 'genre': {
-            controller.text = genre;
-            valido = EditProfileAPI.editPerson(controller.text, keyUser, _usuario.personId, _usuario.token);
-            _usuario.genre = controller.text;
+            valido.then((onValue){
+              if(onValue){
+                _usuario.genre = controller.text;
+                Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                refreshIndicatorKey.currentState.show();
+              }
+              else {
+                controller.text = _usuario.genre;
+                Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+              }
+            });
+
           }
           break;
         }
       }
-
+      /*
       valido.then((onValue){
-        if(onValue){
-          if(keyUser == 'birthday'){
-            Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-            refreshIndicatorKey.currentState.show();
-          }
-          else {
-            Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-            refreshIndicatorKey.currentState.show();
-          }
-
-          /*Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (BuildContext context) => Profile())
-        );*/
-      }
-      else
-      Toast.show("Erro ao atualizar os dados!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-    });
+      if(onValue){
+      if(keyUser == 'birthday'){
+      Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+      refreshIndicatorKey.currentState.show();
+    }
+    else {
+    Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+    refreshIndicatorKey.currentState.show();
   }
+
+  /*Navigator.of(context).pushReplacement(
+  MaterialPageRoute(builder: (BuildContext context) => Profile())
+);*/
+}
+else
+Toast.show("Erro ao atualizar os dados!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+});*/
+}
 }

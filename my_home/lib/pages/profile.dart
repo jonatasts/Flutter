@@ -36,16 +36,16 @@ class _ProfileState extends State<Profile> {
             SizedBox(
               height: 30,
             ),
-            ListTileWidget(title: "Nome", subTitle:nameController.text,refreshIndicatorKey: _refreshIndicatorKey ,controller: nameController, keyUser: "name"),
+            ListTileWidget(title: "Nome", subTitle:nameController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: nameController, keyUser: "name"),
 
             Divider(),
-            ListTileWidget(title: "E-mail", subTitle:emailController.text, controller: emailController, keyUser: "email"),
+            ListTileWidget(title: "E-mail", subTitle:emailController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: emailController, keyUser: "email"),
 
             Divider(),
-            ListTileWidget(title: "Data de Aniversário", subTitle:birthdayController.text, controller: birthdayController, keyUser: "birthday"),
+            ListTileWidget(title: "Data de Aniversário", subTitle:birthdayController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: birthdayController, keyUser: "birthday"),
 
             Divider(),
-            ListTileWidget(title: "Sexo", subTitle:genreController.text, controller: genreController, keyUser: "genre"),
+            ListTileWidget(title: "Sexo", subTitle:genreController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: genreController, keyUser: "genre"),
           ],
         ),
       ),
