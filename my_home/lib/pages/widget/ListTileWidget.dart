@@ -6,6 +6,7 @@ import 'package:grouped_buttons/grouped_buttons.dart';
 
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 
+import '../home.dart';
 import '../profile.dart';
 
 class ListTileWidget extends StatelessWidget{
@@ -59,8 +60,7 @@ class ListTileWidget extends StatelessWidget{
           child: Text('Salvar'),
           onPressed:(){
             udpateData(context);
-            if(keyUser!="birthday")
-            Navigator.of(context).pop();
+
           },
         ),
         FlatButton(
@@ -74,7 +74,7 @@ class ListTileWidget extends StatelessWidget{
 
     showDialog(
       context: context, builder: (BuildContext context) => alertDialog);
-    }
+    }// Fim do displayDialog
 
     Widget genreChoose(){
 
@@ -89,17 +89,16 @@ class ListTileWidget extends StatelessWidget{
             disabled: [],
             onSelected: (String label) {
               if(label == "Feminino")
-              genre = "F";
+              controller.text = "F";
               else
-              genre= "M";
+              controller.text= "M";
             },
           ),
         ),
       );
-    }
+    }// Fim do genreChoose
 
     dataPicker(BuildContext context){
-      print("Data: " + controller.text);
       _dateTime= controller.text == ""? DateTime.now(): DateTime.parse(controller.text);
       DatePicker.showDatePicker(
         context,
@@ -122,10 +121,9 @@ class ListTileWidget extends StatelessWidget{
           udpateData(context);
         },
         onCancel: (){
-          //Navigator.of(context).pop();
         }
       );
-    }
+    }// Fim do dataPicker
 
     udpateData(BuildContext context) async {
       Usuario _usuario = Usuario.getInstance();
@@ -153,11 +151,18 @@ class ListTileWidget extends StatelessWidget{
               if(onValue){
                 _usuario.name = controller.text;
                 Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (BuildContext context) => Home())
+                );
+                //refreshIndicatorKey.currentState.show();
               }
               else {
                 controller.text = _usuario.name;
                 Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (BuildContext context) => Home())
+                );
+                //refreshIndicatorKey.currentState.show();
               }
             });
 
@@ -170,26 +175,41 @@ class ListTileWidget extends StatelessWidget{
               if(onValue){
                 _usuario.birthday = controller.text;
                 Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (BuildContext context) => Home())
+                );
+                //refreshIndicatorKey.currentState.show();
               }
               else {
                 controller.text = _usuario.birthday;
                 Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (BuildContext context) => Home())
+                );
+                //refreshIndicatorKey.currentState.show();
               }
             });
           }
           break;
 
           case 'genre': {
+            valido = EditProfileAPI.editPerson(controller.text, keyUser, _usuario.personId, _usuario.token);
             valido.then((onValue){
               if(onValue){
                 _usuario.genre = controller.text;
                 Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (BuildContext context) => Home())
+                );
+                //refreshIndicatorKey.currentState.show();
               }
               else {
                 controller.text = _usuario.genre;
                 Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (BuildContext context) => Home())
+                );
+                //refreshIndicatorKey.currentState.show();
               }
             });
 
@@ -197,24 +217,6 @@ class ListTileWidget extends StatelessWidget{
           break;
         }
       }
-      /*
-      valido.then((onValue){
-      if(onValue){
-      if(keyUser == 'birthday'){
-      Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-      refreshIndicatorKey.currentState.show();
-    }
-    else {
-    Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-    refreshIndicatorKey.currentState.show();
-  }
+    }//Fim do updateData
 
-  /*Navigator.of(context).pushReplacement(
-  MaterialPageRoute(builder: (BuildContext context) => Profile())
-);*/
-}
-else
-Toast.show("Erro ao atualizar os dados!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-});*/
-}
-}
+  }

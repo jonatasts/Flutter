@@ -2,16 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:my_home/pages/models/usuario.dart';
 
 class EditProfileAPI {
   static Future<bool> editUser(email, idUser, token) async {
     var url = "https://api.myhome.well.eti.br/users/$idUser";
-
-    var header = {
-      "Content-Type": "application/json",
-      "x-access-token": token
-    };
 
     Map params = {"email": email};
 
