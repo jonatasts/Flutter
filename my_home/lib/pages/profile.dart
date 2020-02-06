@@ -13,7 +13,6 @@ class _ProfileState extends State<Profile> {
   TextEditingController emailController = TextEditingController();
   TextEditingController birthdayController = TextEditingController();
   TextEditingController genreController = TextEditingController();
-  GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   var letraUser;
 
   @override
@@ -26,28 +25,24 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:
-      RefreshIndicator(
-        key: _refreshIndicatorKey,
-        onRefresh: _dataUser,
-        child: ListView(
-          children: <Widget>[
+      ListView(
+        children: <Widget>[
 
-            iconUser(),
-            SizedBox(
-              height: 30,
-            ),
-            ListTileWidget(title: "Nome", subTitle:nameController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: nameController, keyUser: "name"),
+          iconUser(),
+          SizedBox(
+            height: 30,
+          ),
+          ListTileWidget(title: "Nome", subTitle:nameController.text, controller: nameController, keyUser: "name"),
 
-            Divider(),
-            ListTileWidget(title: "E-mail", subTitle:emailController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: emailController, keyUser: "email"),
+          Divider(),
+          ListTileWidget(title: "E-mail", subTitle:emailController.text, controller: emailController, keyUser: "email"),
 
-            Divider(),
-            ListTileWidget(title: "Data de Aniversário", subTitle:birthdayController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: birthdayController, keyUser: "birthday"),
+          Divider(),
+          ListTileWidget(title: "Data de aniversário", subTitle:birthdayController.text, controller: birthdayController, keyUser: "birthday"),
 
-            Divider(),
-            ListTileWidget(title: "Sexo", subTitle:genreController.text, refreshIndicatorKey: _refreshIndicatorKey, controller: genreController, keyUser: "genre"),
-          ],
-        ),
+          Divider(),
+          ListTileWidget(title: "Sexo", subTitle:genreController.text, controller: genreController, keyUser: "genre"),
+        ],
       ),
     );
   }
@@ -73,38 +68,6 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  ListTile _listTile(String titulo, String text){
-    return  ListTile(
-      title: Text(
-        titulo,
-        style:_style(),
-      ),
-      subtitle: Text(
-        text == "" ? 'Não informado' : text,
-        style:TextStyle(
-          fontSize: 18,
-          color: Colors.black54
-        ),
-      ),
-      trailing: IconButton(
-        icon: Icon(
-          Icons.edit,
-        ),
-        onPressed:() async{
-          //keySP == "birthday"? dataPicker(context): displayDialog(context);
-        },
-      ),
-    );
-  }
-
-  TextStyle _style(){
-    return TextStyle(
-      color: Colors.black,
-      fontWeight: FontWeight.bold,
-      fontSize: 20,
-    );
-  }
-
   Future<void> _dataUser() async{
     Usuario _usuario = Usuario.getInstance();
     nameController.text = _usuario.name;
@@ -113,18 +76,5 @@ class _ProfileState extends State<Profile> {
     genreController.text =_usuario.genre;
     letraUser = nameController.text[0];
   }
-  /*
-  CircleAvatar(
-  radius: 40,
-  backgroundColor:  Color(0xffffffff),
-  child: Text(_usuario.name[0],
-  style: TextStyle(
-  fontSize: 40,
-  fontWeight: FontWeight.bold,
-  color: Colors.black,
-),
-)
-);
-*/
 
 }

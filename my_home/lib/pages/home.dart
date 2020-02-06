@@ -5,13 +5,17 @@ import 'profile.dart';
 import 'login.dart';
 
 class Home extends StatefulWidget {
+  final selectDrawerItem;
+
+  const Home(this.selectDrawerItem);
+
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   Usuario _usuario = Usuario.getInstance();
-  int _selectDrawerItem = 0;
+  int _selectDrawerItem = -1;
 
   _getPageDrawerItem(int pos) {
     switch (pos) {
@@ -38,6 +42,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    if(_selectDrawerItem == -1){
+      _selectDrawerItem = widget.selectDrawerItem;
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(

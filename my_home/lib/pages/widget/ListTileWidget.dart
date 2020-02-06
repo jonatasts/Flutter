@@ -7,20 +7,18 @@ import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 
 import '../home.dart';
-import '../profile.dart';
 
 class ListTileWidget extends StatelessWidget{
   final String title;
   final String subTitle;
   final String keyUser;
   final TextEditingController controller;
-  final GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   String genre;
 
   DateTime _dateTime;
   DateTimePickerLocale _locale = DateTimePickerLocale.pt_br;
 
-  ListTileWidget({@required this.title, @required this.subTitle, @required this.refreshIndicatorKey, @required this.controller, @required this.keyUser});
+  ListTileWidget({@required this.title, @required this.subTitle, @required this.controller, @required this.keyUser});
 
   TextStyle _style(){
     return TextStyle(
@@ -135,11 +133,12 @@ class ListTileWidget extends StatelessWidget{
           if(onValue){
             _usuario.email = controller.text;
             Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-            refreshIndicatorKey.currentState.show();
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
           }
           else {
             controller.text = _usuario.email;
             Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
           }
         });
       }
@@ -151,18 +150,12 @@ class ListTileWidget extends StatelessWidget{
               if(onValue){
                 _usuario.name = controller.text;
                 Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (BuildContext context) => Home())
-                );
-                //refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
               }
               else {
                 controller.text = _usuario.name;
                 Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (BuildContext context) => Home())
-                );
-                //refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
               }
             });
 
@@ -175,18 +168,12 @@ class ListTileWidget extends StatelessWidget{
               if(onValue){
                 _usuario.birthday = controller.text;
                 Toast.show("$title atualizada com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (BuildContext context) => Home())
-                );
-                //refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
               }
               else {
                 controller.text = _usuario.birthday;
                 Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (BuildContext context) => Home())
-                );
-                //refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
               }
             });
           }
@@ -198,18 +185,12 @@ class ListTileWidget extends StatelessWidget{
               if(onValue){
                 _usuario.genre = controller.text;
                 Toast.show("$title atualizado com sucesso!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (BuildContext context) => Home())
-                );
-                //refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
               }
               else {
                 controller.text = _usuario.genre;
                 Toast.show("Erro ao atualizar o campo!!", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (BuildContext context) => Home())
-                );
-                //refreshIndicatorKey.currentState.show();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(1)));
               }
             });
 

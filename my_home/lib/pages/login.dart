@@ -148,11 +148,7 @@ class Login extends StatelessWidget {
 
               var usuario = await LoginApi.login(login, senha);
               if (usuario != null) {
-                Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => Home(),
-                  ),
-                );
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(0)));
               } else {
                 Toast.show("Usuário ou senha inválidos !", context, duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
               }
