@@ -1,16 +1,33 @@
-# my_home
+# myhome
 
-A new Flutter project.
+<h3>Funcionalidades implementadas:</h3>
+• Sign In<br>
+• Sign Up<br>
+• Sign Out<br>
+• Acessar o menu de opções<br>
+• Consultar Perfil<br>
+• Atualizar Perfil<br>
 
-## Getting Started
+<h3>Para executar no Visual Studio:</h3>
+• Selecione o projeto<br>
+• Abra o terminal<br>
+• Execute o comando cd "diretorio_da_pasta_do_projeto"<br>
+• Em seguida execute o comando "flutter pub get"<br>
+• Após execute o comando "flutter run"<br>
 
-This project is a starting point for a Flutter application.
+<h3>Screenshots</h3>
 
-A few resources to get you started if this is your first Flutter project:
+<img src="my_home/assets/img_app/my_home.gif" height="450" width="250">
+<img src="my_home/assets/img_app/img_01.jpeg" height="450" width="250">
+<img src="my_home/assets/img_app/img_02.jpeg" height="450" width="250">
+<img src="my_home/assets/img_app/img_03.jpeg" height="450" width="250">
+<img src="my_home/assets/img_app/img_04.jpeg" height="450" width="250">
+<img src="my_home/assets/img_app/img_05.jpeg" height="450" width="250">
+<img src="my_home/assets/img_app/img_06.jpeg" height="450" width="250">
+<img src="my_home/assets/img_app/img_07.jpeg" height="450" width="250">
+<img src="my_home/assets/img_app/img_08.jpeg" height="450" width="250">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<br>Projeto em Flutter.<br>
+
+Desenvolvido com o editor Visual Studio Code.
